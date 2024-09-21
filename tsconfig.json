@@ -1,0 +1,27 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@styled-system/*": [
+        "src/styled-system/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ]
+    },
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}

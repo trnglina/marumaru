@@ -1,0 +1,21 @@
+---
+import { css } from '@styled-system/css';
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+const { pathname } = Astro.url;
+---
+
+<a
+  class={css({
+    display: 'inline-block',
+    paddingBlock: '1',
+    paddingInline: '2',
+  })}
+  href={pathname !== href ? href : undefined}
+>
+  <slot />
+</a>

@@ -1,0 +1,343 @@
+---
+layout: "@layouts/SrdLayout.astro"
+title: System Reference Document
+---
+
+import TableWrapper from "@components/TableWrapper.astro";
+import DifficultyChart from "@components/srd/DifficultyChart";
+
+## Characters
+
+Characters are defined by their Character Aspects, Attributes, and Skills. These represent the core of a character's background, circumstances, and capabilities.
+
+In addition to these core elements, characters also track the following quantities, which generally factor little into how a character acts or is perceived:
+
+- **Injuries**, which track how much harm a character has taken.
+- **Armour**, which tracks how much harm a character can ignore.
+- **Advancement**, which tracks a character's mechanical progression.
+- For Player Characters, **Fate Points**, which tracks how many times a character can influence the story.
+
+### Character Aspects
+
+These are the five Aspects that describe a character. Among these, there should be one of each:
+
+- A **High Concept**: a broad description of the character's most important qualities.
+- A **Trouble**: something that makes the character's life difficult.
+- For Player Characters, a **Relationship** with another Player Character.
+
+Character Aspects should provide a mix of positive and negative elements. They should be specific enough to be usable, but broad enough to be applicable in a variety of situations.
+
+### Attributes
+
+These are a character's inherent qualities. These are rated from one to five, and are used in conjunction with Skills to resolve actions. The nine core Attributes are as follows:
+
+<TableWrapper>
+
+|              | Mental        | Physical      | Social           |
+| ------------ | ------------- | ------------- | ---------------- |
+| _Power_      | **Intellect** | **Might**     | **Presence**     |
+| _Finesse_    | **Wits**      | **Dexterity** | **Manipulation** |
+| _Resistance_ | **Resolve**   | **Stamina**   | **Composure**    |
+
+</TableWrapper>
+
+During character creation, each attribute starts at one, and the player has sixteen points to distribute among them.
+
+### Skills
+
+These are a character's relative expertise. These are rated from zero to five, and are used in conjunction with Attributes to resolve actions.
+
+- **Academics**: to know matters that typically require study or research.
+- **Aim**: to aim with a ranged weapon, or magic.
+- **Brawl**: to harm another, either unarmed or with melee weapons.
+- **Crafts**: to create or repair physical objects.
+- **Insight**: to judge others' mood and intentions.
+- **Investigation**: to examine one's surroundings.
+- **Logic**: to deduce based on held knowledge.
+- **Nature**: to intimately know the natural world and how to interact with it.
+- **Performance**: to convincingly take on the role of another.
+- **Riding**: to hold balance and control a mount.
+- **Societies**: to intimately know society's structures and practices, and how to navigate them.
+- **Stealth**: to act unseen or unheard.
+
+During character creation, each skill starts at zero, and the player has sixteen points to distribute among them.
+
+Three of these skills may be declared as **Specialties**.
+
+### Pools
+
+For less important characters, a character's full set of Attributes and Skills may be abstracted into a ladder of single quantities, each rated between one and ten:
+
+- **Primary Pool**: how good the character is at doing what the character is best at.
+- **Secondary Pool**: how good the character is at performing less common or familiar tasks.
+- **Desperation Pool**: how good the character is out of their comfort zone.
+
+These characters do not benefit from Specialties.
+
+## Aspects
+
+Aspects are short assertions about the current situation characters find themselves in. Aspects may live on characters, the environment, or even the narrative itself.
+
+### Fate Points
+
+**Fate Points** represent narrative agency. They can be spent to influence the narrative directly, or indirectly by creating mechanical advantages.
+
+Characters start sessions with a minimum of three Fate Points. The Game Master controls the unlimited pool of Fate Points, from which Fate Points are paid out, and into which Fate Points are paid in. Fate Points are never transferred between characters.
+
+### Invoking Aspects
+
+A character may spend a Fate Point to invoke an Aspect that is relevant to the current situation to _create a mechanical advantage_. The invocation may benefit the invoking character, another character, or an environmental hazard.
+
+- If it benefits a character, that character gains Enhancement +1 on their current roll, and an optional re-roll (with no Enhancement).
+- If it benefits an environmental hazard, characters resisting that hazard suffer Difficulty +1.
+
+Invocation may be done before or after the roll. Multiple Aspects may be invoked on a single roll, but the same Aspect may not be invoked more than once. If invoking the Character Aspect of another character, and the invocation works to their disadvantage, that character receives a Fate Point. Fate Points gained this way may not be spent until the end of the scene.
+
+### Compelling Aspects
+
+A character may spend a Fate Point to propose a compel of an Aspect that is relevant to the current situation, and _create a narrative complication_. A character affected by a compel may accept the complication and receive a Fate Point, or spend a Fate Point to prevent the complication from happening. Once accepted, the complication occurs regardless of anyone's efforts. A Player may propose a compel on their own character for free.
+
+Compels take two general forms:
+
+- External events that represent the environment responding to Aspects present in the situation.
+- Internal decisions that represent a character's lack of choice in the face of the Aspects present in the situation.
+
+### Adding and Removing Aspects
+
+Actions may create or discover aspects that are relevant to the situation. Aspects may be removed in any way that makes sense in the situation.
+
+## Actions
+
+Actions are used to perform non-trivial tasks, such as overcoming obstacles, making attacks, and casting magic. Resolving an action involves the following steps:
+
+1. Roll a pool of ten-sided dice, equal to the combination of one Attribute and one Skill, or two Attributes.
+2. Count all dice showing an eight or above as a **Hit**. Tens count an additional Hit. If **Double 9s** is active, nines also count an additional Hit.
+3. If there is at least one Hit, add any Enhancement present.
+4. Spend Hits to overcome the **Difficulty** of the action, and any **Complications** present.
+
+A character may gain a Fate Point by converting a failure into a **Dramatic Failure**.
+
+### Advancement
+
+Advancement represents character progression, and grants Difficulty -1 per Advancement. Advancement should come at a cost, usually a detrimental Aspect.
+
+### Enhancement
+
+Enhancement is rated between +1 and +3, and may come from equipment or situational modifiers. Enhancement adds _additional_ Hits to a roll that has at least one Hit. Unless otherwise stated, Enhancement does not stack.
+
+### Difficulty
+
+Difficulty is set by the Game Master, and represents the base number of Hits a character _must_ spend to succeed at an action. Modifiers cannot reduce the Difficulty below Normal (1).
+
+The following table provides a rough guide to setting Difficulty for normal actions:
+
+<TableWrapper>
+
+| Difficulty      | Required Hits |
+| --------------- | ------------- |
+| **Normal**      | 1             |
+| **Challenging** | 2             |
+| **Difficult**   | 3             |
+| **Daunting**    | 4             |
+| **Impossible**  | 5+            |
+
+</TableWrapper>
+
+<DifficultyChart client:only="react" />
+
+### Complications
+
+Complications are unexpected features of a given action that affect the outcome of a successful action. The effects of a Complication can be avoided by spending additional Hits over the Difficulty to overcome their rating:
+
+<TableWrapper>
+
+| Rating       | Hits Cost |
+| ------------ | --------- |
+| **Minor**    | 1         |
+| **Moderate** | 2         |
+| **Major**    | 3         |
+
+</TableWrapper>
+
+### Tricks
+
+Tricks are benefits that may be purchased with Hits over the Difficulty, regardless of Complications. As many tricks may be purchased as Hits are available, but the same trick may only be purchased once per action. The following trick is available in most situations:
+
+- **Create an Advantage** (2 Hits): create an advantageous Aspect that may be invoked for free.
+
+Other tricks may be available in specific situations, such as when attacking or when casting Magic.
+
+### Contested Actions
+
+Sometimes, the completion of an action faces resistance from another character. The resisting character rolls their own pool of relevant Skills/Attributes first, and the number of Hits achieved forms the difficulty for the instigating character. If the resisting character rolls no Hits, the Difficulty is Normal.
+
+### Co-operative Actions
+
+When two or more characters work together, they roll independently, but may pool their Hits freely to overcome the Difficulty, to avoid Complications, and to purchase Tricks. This is considered a single action. Failure to overcome the Difficulty, or to avoid Complications, affects all characters involved.
+
+## Combat
+
+Combat occurs when a character makes a hostile attack against another character, and the other character responds in kind. The attacking character always acts first, with the rest of the order determined by narrative. Once the initiative order is established, character should continue to act in that order, unless the narrative dictates otherwise.
+
+### Attacking
+
+Attacks are normal Contested Actions, in which the defending character rolls the higher of **Stamina** or **Dexterity**.
+
+**Melee Attacks** roll Brawl + Might.
+
+**Shooting Attacks** roll Aim + Dexterity.
+
+**Thrown Attacks** roll Aim + Might.
+
+The following Tricks are additionally available to any character making attacks:
+
+- **Strike** (Free): deal one Injury to the resisting character.
+- **Critical Strike** (3 Hits): deal two Injuries to the resisting character.
+- **Destroy Object** (2 Hits): destroy a weak object in the vicinity, such as a piece of light cover, or a barrier.
+
+### Injuries and Armour
+
+Injuries are counted on a graded track:
+
+<TableWrapper>
+
+| Injuries | Grade          |
+| -------- | -------------- |
+| 1        | **Grazed**     |
+| 2-3      | **Bloodied**   |
+| 4-5      | **Wounded**    |
+| 6-7      | **Maimed**     |
+| 8+       | **Near Death** |
+
+</TableWrapper>
+
+Reaching a given grade grants the following effects:
+
+- **Grazed**: no effects. Injuries at this grade heal at the end of the scene.
+- **Bloodied**: gain a die when taking an Action with a Specialty Skill. Injuries at this grade heal at a rate of one Injury per hour.
+- **Wounded**: gain two dice when taking an Action with a Specialty Skill. Injuries at this grade heal at a rate of one Injury per day.
+- **Maimed**: when taking an Action with a Specialty Skill, optionally take an _Injuries Aggravated_ Aspect to gain Enhancement +2, in additional to the two dice from being Wounded. Injuries at this grade do not heal by themselves.
+- **Near Death**: the character may take one more action with three additional dice and Enhancement +2 before taking the _Incapacitated_ Aspect. Injuries at this grade do not heal by themselves.
+
+Armour absorbs damage before it reaches the character. Each point of Armour provides an absorbed Injury. Armour points are not restored unless specifically repaired, replaced, or recharged. Armour applies to all types of damage unless otherwise stated.
+
+When a character reaches the Maimed grade, they must take a detrimental Aspect that reflects the consequences of a persistent injury.
+
+## Magic
+
+For characters that are able to wield magic, its use is intuitive and does not involve a specific skill or attribute. Instead, casting magic can be thought of as channelling magic to help facilitate a normal action.
+
+**Resonance** is a transient currency that may be spent to extend the caster's inherent abilities. For every Resonance, the character benefits from Difficulty -1. Characters cannot spend more than five Resonance on a single Cast.
+
+Casts have a high inherent Difficulty that is determined on the three following dimensions:
+
+- The **Potency** of the magical effect on a single subject.
+- The **Scale** of the magical effect, in terms of area of effect, or number of subjects affected.
+- The **Duration** of the magical effect.
+
+If magic is only being used to perform an action that is otherwise possible without magic, the normal Difficulty chart should be used.
+
+### Potency
+
+**Potency** contributes to the difficulty of a Cast as follows:
+
+<TableWrapper>
+
+| Potency         | Difficulty |
+| --------------- | ---------- |
+| **Charm**       | +1         |
+| **Minor Spell** | +2         |
+| **Major Spell** | +4         |
+| **Grand Spell** | +8         |
+
+</TableWrapper>
+
+The effects that can be achieved with each level of Potency are as follows:
+
+- **Charm**:
+
+  - Exert minor control over a phenomenon.
+  - Offer minor protection against a phenomenon.
+  - Gain direct knowledge about a truth.
+  - Expose things hidden to ordinary senses.
+  - Hide things from ordinary senses.
+
+- **Minor Spell**:
+
+  - Inflict minor harm.
+  - Offer total protection against a phenomenon.
+  - Weaken or impair things.
+  - Bolster or improve things.
+
+- **Major Spell**:
+
+  - Inflict major harm.
+  - Transform things.
+
+- **Grand Spell**:
+
+  - Create or destroy things _ex nihilo_.
+  - Alter the fabric of reality.
+
+### Scale
+
+**Scale** contributes to the difficulty of a Cast as follows:
+
+<TableWrapper>
+
+| Scale                               | Difficulty |
+| ----------------------------------- | ---------- |
+| **Single**                          | +1         |
+| **Cluster (\~2~5 Subjects)**        | +2         |
+| **Small Crowd (\~6~20 Subjects)**   | +3         |
+| **Large Crowd (\~20~100 Subjects)** | +4         |
+| **Mass (\~100+ Subjects)**          | +5         |
+
+</TableWrapper>
+
+### Duration
+
+**Duration** contributes to the difficulty of a Cast as follows:
+
+<TableWrapper>
+
+| Duration                    | Difficulty |
+| --------------------------- | ---------- |
+| **Instant**                 | +1         |
+| **Lingering (\~1~4 Turns)** | +2         |
+| **Sustained (\~5+ Turns)**  | +3         |
+| **One Week**                | +4         |
+| **One Year**                | +5         |
+| **Permanent**               | +6         |
+
+</TableWrapper>
+
+### Rote Spells
+
+Spells that have been repeatedly practiced and mastered are considered **Rote Spells**. Rote Spells benefit from Difficulty -2.
+
+### Fallout
+
+The Fallout of a Cast is the side effect that channelling magic has on the caster and their environment.
+
+Fallout is determined by the amount of Resonance spent, in accordance with the following table:
+
+<TableWrapper>
+
+| Resonance | Fallout          |
+| --------- | ---------------- |
+| 1         | **Minor**        |
+| 2         | **Moderate**     |
+| 3         | **Significant**  |
+| 4         | **Major**        |
+| 5         | **Catastrophic** |
+
+</TableWrapper>
+
+The consequences of Fallout are determined by the Game Master, but the following should be considered a guideline:
+
+- **Minor**: an Injury that bypasses Armour.
+- **Moderate**: two Injuries that bypass Armour.
+- **Significant**: four Injuries that bypass Armour, and minor local environmental damage.
+- **Major**: eight Injuries that bypass Armour, and significant local environmental damage.
+- **Catastrophic**: eight Injuries that bypass Armour, the caster immediately gains _Incapacitated_, and the local environment is significantly altered.

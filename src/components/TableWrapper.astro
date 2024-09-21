@@ -1,0 +1,48 @@
+---
+import { css } from '@styled-system/css';
+import { grid, gridItem } from '@styled-system/patterns';
+---
+
+<div
+  class={grid({
+    columns: 'minmax(0, 1fr)',
+    marginInline: '-10',
+  })}
+>
+  <div class={gridItem({ column: '1', overflowX: 'auto' })}>
+    <div
+      class={css({
+        paddingInline: '6',
+        marginInline: 'auto',
+        minWidth: '100%',
+        width: 'max-content',
+      })}
+    >
+      <div
+        class={css({
+          backgroundColor: 'stone.100',
+          borderRadius: 'xs',
+          paddingBlock: '1',
+
+          '& > table': {
+            borderCollapse: 'separate',
+            borderSpacing: '{sizes.4} 0',
+            width: 'full',
+          },
+
+          '& > table td, & > table th': {
+            paddingBlock: '0.5',
+          },
+
+          '& > table th': {
+            fontStyle: 'italic',
+            fontWeight: 'normal',
+            textAlign: 'start',
+          },
+        })}
+      >
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+---
+import { css } from '@styled-system/css';
+import type { MarkdownLayoutProps } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+}>;
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <div
+    class={css({
+      maxWidth: 'prose',
+      marginInline: 'auto',
+    })}
+  >
+    <main
+      class={css({
+        margin: '10',
+
+        '& > h1': {
+          breakAfter: 'avoid',
+          marginBlockEnd: '4',
+          fontSize: '2xl',
+          fontWeight: 'semibold',
+        },
+
+        '& > h2::marker, & > h3::marker, & > h4::marker': {
+          fontSize: 'xs',
+          fontWeight: 'normal',
+        },
+
+        '& > h2': {
+          breakAfter: 'avoid',
+          display: 'list-item',
+          counterIncrement: 'part',
+          counterReset: 'section',
+          fontSize: '2xl',
+          marginBlockStart: '4',
+        },
+
+        '& > h2::marker': {
+          content: 'counters(part, ".") ". "',
+        },
+
+        '& > h3': {
+          breakAfter: 'avoid',
+          display: 'list-item',
+          counterIncrement: 'section',
+          counterReset: 'subsection',
+          fontSize: 'xl',
+          fontWeight: 'semibold',
+          marginBlockStart: '4',
+        },
+
+        '& > h3::marker': {
+          content: 'counters(part, ".") "." counters(section, ".") ". "',
+        },
+
+        '& > h4': {
+          breakAfter: 'avoid',
+          display: 'list-item',
+          counterIncrement: 'subsection',
+          fontSize: 'xl',
+          fontStyle: 'italic',
+          marginBlockStart: '4',
+        },
+
+        '& > h4::marker': {
+          content:
+            'counters(part, ".") "." counters(section, ".") "." counters(subsection, ".") ". "',
+        },
+
+        '& > p, & > ol, & > ul, & > hr': {
+          marginBlock: '2',
+        },
+
+        '& > ol, & > ul, & > ol ol, & > ol ul, & > ul ol, & > ul ul': {
+          paddingInlineStart: '8',
+        },
+
+        '& > ol, & > ol ol, & > ul ol': {
+          listStyleType: 'decimal',
+        },
+
+        '& > ul, & > ol ul, & > ul ul': {
+          listStyleType: 'disc',
+        },
+
+        '& > strong': {
+          fontWeight: 'semibold',
+        },
+
+        '& > em': {
+          fontStyle: 'italic',
+        },
+      })}
+    >
+      <h1>
+        {frontmatter.title}
+      </h1>
+      <slot />
+    </main>
+  </div>
+</BaseLayout>

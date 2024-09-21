@@ -1,0 +1,20 @@
+---
+import { css } from '@styled-system/css';
+import { hstack } from '@styled-system/patterns';
+import NavigationLink from './NavigationLink.astro';
+---
+
+<nav class={css({ overflowX: 'auto' })}>
+  <ul
+    class={hstack({
+      backgroundColor: 'stone.800',
+      color: 'stone.100',
+      fontSize: 'xs',
+      textTransform: 'lowercase',
+    })}
+  >
+    <li>
+      <NavigationLink href="/srd">SRD</NavigationLink>
+    </li>
+  </ul>
+</nav>
